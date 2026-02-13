@@ -53,33 +53,11 @@ class Program
 	// --- Using For Loop ---
 
 	static void using_for_loop()
-	{  /* A food truck sells burritos for $9 each.
-         * Minimum cost per month is $1200 .
-         * The unit cost per burrito is $3.80.
-         * 
-         * Write a program that:
-         * 
-         * Starts from 0 burritos sold.
-         * Keeps increasing the number of burritos sold by 1 each time.
-         * Calculates revenue, cost, and profit (revenue - cost).
-         * Stops and reports the first number of burritos where the truck makes profit (revenue > cost).
-         * 
-         * Expected output:
-         * ...
-         * After selling 229 burritos: profit -9.20.
-         * After selling 230 burritos: profit -4.00
-         * ------------------------------------
-         * Success! Profit reached.
-         * Number of Burritos: 231 
-         * Revenue: $2,079.00 
-         * Cost: $2,077.80
-         * Profit: $1.20
-         * 
-        */
-
+	{
 		Console.WriteLine("Calculating the break-even point using for loop ... ");
 		Console.WriteLine("------------------------------------");
 
+		// enter for loop code here
 		decimal unit_price = 9.00m;
 		decimal unit_cost = 3.80m;
 		decimal fixed_cost = 1200.00m;
@@ -90,23 +68,27 @@ class Program
 			decimal revenue = items_sold * unit_price;
 			decimal cost = items_sold * unit_cost + fixed_cost;
 			decimal profit = revenue - cost;
-			if (profit <= 0)
+			if (profit > 0)
 			{
-				Console.WriteLine($"After selling {items_sold} burritos: profit {profit:C2}.");
+
+				Console.WriteLine("------------------------------------");
+				Console.WriteLine("Success! Profit reached.");
+				Console.WriteLine($"Number of Burritos: {items_sold}");
+				Console.WriteLine($"Revenue: {revenue:C2}");
+				Console.WriteLine($"Cost: {cost:C2}");
+				Console.WriteLine($"Profit: {profit:C2}");
+
+				break;
 
 			}
 			else
-		 break; 
-			Console.WriteLine("------------------------------------");
-			Console.WriteLine("Success! Profit reached.");
-			Console.WriteLine($"Number of Burritos: {items_sold}");
-			Console.WriteLine($"Revenue: {revenue:C2}");
-			Console.WriteLine($"Cost: {cost:C2}");
-			Console.WriteLine($"Profit: {profit:C2}");
+			{
+				Console.WriteLine($"After selling {items_sold} burritos: profit {profit:C2}.");
+			}
 
-			Console.WriteLine("\nPress any key to return to menu...");
-			Console.ReadKey();
 		}
+		Console.WriteLine("\nPress any key to return to menu...");
+		Console.ReadKey();
 	}
 
 	// --- Using While Loop ---
@@ -115,6 +97,8 @@ class Program
 	{
 		Console.WriteLine("Calculating the break-even point using while loop ... ");
 		Console.WriteLine("------------------------------------");
+
+		//enter while loop code here
 
 		decimal unit_price = 9.00m;
 		decimal unit_cost = 3.80m;
@@ -125,20 +109,13 @@ class Program
 		decimal cost = 0.00m;
 		decimal profit = 0.00m;
 
-		while (profit <= 0)
+		while (true)
 		{
-			Console.WriteLine($"After selling {items_sold} burritos: profit {profit:C2}.");
-			items_sold++;
-
 			revenue = items_sold * unit_price;
 			cost = items_sold * unit_cost + fixed_cost;
 			profit = revenue - cost;
 
-			if (profit <= 0)
-			{
-
-			}
-			else
+			if (profit > 0)
 			{
 				Console.WriteLine("------------------------------------");
 				Console.WriteLine("Success! Profit reached.");
@@ -147,6 +124,10 @@ class Program
 				Console.WriteLine($"Cost: {cost:C2}");
 				Console.WriteLine($"Profit: {profit:C2}");
 				break;
+			}
+			else
+			{
+				Console.WriteLine($"After selling {items_sold} burritos: profit {profit:C2}.");
 			}
 
 			items_sold++;
@@ -162,6 +143,8 @@ class Program
 	{
 		Console.WriteLine("Calculating the break-even point using do-while loop ... ");
 		Console.WriteLine("------------------------------------");
+		
+		//enter do-while code here
 		decimal unit_price = 9.00m;
 		decimal unit_cost = 3.80m;
 		decimal fixed_cost = 1200.00m;
@@ -177,19 +160,27 @@ class Program
 			cost = items_sold * unit_cost + fixed_cost;
 			profit = revenue - cost;
 
-			Console.WriteLine($"After selling {items_sold} burritos: profit {profit:C2}.");
+			if (profit <= 0)
+			{
+				Console.WriteLine("------------------------------------");
+				Console.WriteLine("Success! Profit reached.");
+				Console.WriteLine($"Number of Burritos: {items_sold}");
+				Console.WriteLine($"Revenue: {revenue:C2}");
+				Console.WriteLine($"Cost: {cost:C2}");
+				Console.WriteLine($"Profit: {profit:C2}");
+				break;
+			}
+			else
+			{
+				Console.WriteLine($"After selling {items_sold} burritos: profit {profit:C2}.");
+			}
+
 			items_sold++;
 
 		}
-		while (profit <= 0);
-		Console.WriteLine("------------------------------------");
-		Console.WriteLine("Success! Profit reached.");
-		Console.WriteLine($"Number of Burritos: {items_sold}");
-		Console.WriteLine($"Revenue: {revenue:C2}");
-		Console.WriteLine($"Cost: {cost:C2}");
-		Console.WriteLine($"Profit: {profit:C2}");
+		while (true);
 
 		Console.WriteLine("\nPress any key to return to menu...");
 		Console.ReadKey();
 	}
-} 
+}
